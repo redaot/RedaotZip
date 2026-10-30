@@ -1,0 +1,103 @@
+#pragma code_page(65001)
+#include <windows.h>
+#include <commctrl.h>
+#include "resource.h"
+#include "version.h"
+
+IDI_APP ICON "../assets/app.ico"
+1 RT_MANIFEST "app.manifest"
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION RZ_VER_MAJOR,RZ_VER_MINOR,RZ_VER_PATCH,RZ_VER_BUILD
+ PRODUCTVERSION RZ_VER_MAJOR,RZ_VER_MINOR,RZ_VER_PATCH,RZ_VER_BUILD
+ FILEOS VOS_NT_WINDOWS32
+ FILETYPE VFT_APP
+BEGIN
+  BLOCK "StringFileInfo"
+  BEGIN
+    BLOCK "041804b0"
+    BEGIN
+      VALUE "CompanyName", "REDAOT"
+      VALUE "FileDescription", "RedaotZip - arhivator ZIP cu criptare AES-256"
+      VALUE "FileVersion", RZ_VERSION_STR
+      VALUE "ProductName", "RedaotZip"
+      VALUE "ProductVersion", RZ_VERSION_STR
+      VALUE "LegalCopyright", "made by REDAOT"
+    END
+  END
+  BLOCK "VarFileInfo"
+  BEGIN
+    VALUE "Translation", 0x0418, 1200
+  END
+END
+
+IDD_ARCHIVE DIALOGEX 0, 0, 310, 238
+STYLE DS_SETFONT | DS_MODALFRAME | DS_CENTER | WS_POPUP | WS_CAPTION | WS_SYSMENU | WS_MINIMIZEBOX
+EXSTYLE WS_EX_APPWINDOW
+CAPTION "RedaotZip - Arhivare criptată"
+FONT 9, "Segoe UI", 400, 0, 1
+BEGIN
+    CONTROL         "", IDC_LOGO, "Static", SS_ICON | SS_REALSIZEIMAGE, 10, 8, 32, 32
+    LTEXT           "Arhivare criptată AES-256", IDC_TITLE, 48, 9, 252, 14
+    LTEXT           "", IDC_SUBTITLE, 48, 26, 252, 10, SS_ENDELLIPSIS
+    LTEXT           "Arhiva care se creează:", IDC_L_OUT, 10, 50, 200, 8
+    EDITTEXT        IDC_OUT, 10, 60, 262, 13, ES_AUTOHSCROLL
+    PUSHBUTTON      "...", IDC_BROWSE, 276, 59, 24, 15
+    LTEXT           "Parolă:", IDC_PWLABEL, 10, 80, 140, 8
+    EDITTEXT        IDC_PW, 10, 90, 140, 13, ES_PASSWORD | ES_AUTOHSCROLL
+    LTEXT           "Confirmă parola:", IDC_PW2LABEL, 160, 80, 140, 8
+    EDITTEXT        IDC_PW2, 160, 90, 140, 13, ES_PASSWORD | ES_AUTOHSCROLL
+    AUTOCHECKBOX    "Arată parola", IDC_SHOWPW, 10, 107, 90, 10
+    LTEXT           "", IDC_STRENGTH, 160, 107, 140, 10
+    LTEXT           "Compresie:", IDC_L_LEVEL, 10, 125, 50, 8
+    COMBOBOX        IDC_LEVEL, 62, 123, 120, 80, CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    AUTOCHECKBOX    "Adaugă un fișier cu instrucțiuni pentru cei care deschid arhiva cu Windows", IDC_WARNFILE, 10, 143, 290, 10
+    AUTOCHECKBOX    "Ascunde și numele fișierelor (arhivă în arhivă)", IDC_HIDENAMES, 10, 157, 290, 10
+    CONTROL         "", IDC_PROGRESS, "msctls_progress32", PBS_SMOOTH, 10, 176, 290, 10
+    LTEXT           "", IDC_STATUS, 10, 190, 290, 9, SS_PATHELLIPSIS
+    LTEXT           "", IDC_BRAND, 10, 218, 160, 9
+    DEFPUSHBUTTON   "Arhivează", IDOK, 186, 213, 56, 16
+    PUSHBUTTON      "Anulează", IDCANCEL, 246, 213, 56, 16
+END
+
+IDD_EXTRACT DIALOGEX 0, 0, 310, 214
+STYLE DS_SETFONT | DS_MODALFRAME | DS_CENTER | WS_POPUP | WS_CAPTION | WS_SYSMENU | WS_MINIMIZEBOX
+EXSTYLE WS_EX_APPWINDOW
+CAPTION "RedaotZip - Dezarhivare"
+FONT 9, "Segoe UI", 400, 0, 1
+BEGIN
+    CONTROL         "", IDC_LOGO, "Static", SS_ICON | SS_REALSIZEIMAGE, 10, 8, 32, 32
+    LTEXT           "Dezarhivare", IDC_TITLE, 48, 9, 252, 14
+    LTEXT           "", IDC_SUBTITLE, 48, 26, 252, 10, SS_PATHELLIPSIS
+    LTEXT           "", IDC_INFO, 10, 48, 290, 18
+    LTEXT           "Extrage în folderul:", IDC_L_DEST, 10, 70, 200, 8
+    EDITTEXT        IDC_DEST, 10, 80, 262, 13, ES_AUTOHSCROLL
+    PUSHBUTTON      "...", IDC_BROWSE, 276, 79, 24, 15
+    LTEXT           "Parolă:", IDC_PWLABEL, 10, 100, 140, 8
+    EDITTEXT        IDC_PW, 10, 110, 180, 13, ES_PASSWORD | ES_AUTOHSCROLL
+    AUTOCHECKBOX    "Arată parola", IDC_SHOWPW, 200, 112, 100, 10
+    AUTOCHECKBOX    "Suprascrie fișierele existente (altfel se redenumesc)", IDC_OVERWRITE, 10, 132, 290, 10
+    AUTOCHECKBOX    "Deschide folderul după extragere", IDC_OPENFOLDER, 10, 146, 290, 10
+    CONTROL         "", IDC_PROGRESS, "msctls_progress32", PBS_SMOOTH, 10, 164, 290, 10
+    LTEXT           "", IDC_STATUS, 10, 178, 290, 9, SS_PATHELLIPSIS
+    LTEXT           "", IDC_BRAND, 10, 196, 160, 9
+    DEFPUSHBUTTON   "Extrage", IDOK, 186, 191, 56, 16
+    PUSHBUTTON      "Anulează", IDCANCEL, 246, 191, 56, 16
+END
+
+IDD_MAIN DIALOGEX 0, 0, 250, 152
+STYLE DS_SETFONT | DS_MODALFRAME | DS_CENTER | WS_POPUP | WS_CAPTION | WS_SYSMENU | WS_MINIMIZEBOX
+EXSTYLE WS_EX_APPWINDOW
+CAPTION "RedaotZip"
+FONT 9, "Segoe UI", 400, 0, 1
+BEGIN
+    CONTROL         "", IDC_LOGO, "Static", SS_ICON | SS_REALSIZEIMAGE, 10, 8, 32, 32
+    LTEXT           "RedaotZip", IDC_TITLE, 48, 9, 192, 14
+    LTEXT           "Arhivator ZIP cu criptare AES-256", IDC_SUBTITLE, 48, 26, 192, 10
+    PUSHBUTTON      "Arhivează fișiere...", IDC_M_FILES, 10, 50, 230, 18
+    PUSHBUTTON      "Arhivează un folder...", IDC_M_FOLDER, 10, 72, 230, 18
+    PUSHBUTTON      "Dezarhivează o arhivă ZIP...", IDC_M_EXTRACT, 10, 94, 230, 18
+    LTEXT           "Sfat: le găsești și în meniul de click dreapta din Explorer.", IDC_L_TIP, 10, 116, 230, 9
+    LTEXT           "", IDC_BRAND, 10, 136, 160, 9
+    PUSHBUTTON      "Închide", IDCANCEL, 190, 131, 50, 16
+END

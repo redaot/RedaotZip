@@ -1,0 +1,4 @@
+LIBRARY RedaotZipShell
+EXPORTS
+    DllGetClassObject PRIVATE
+    DllCanUnloadNow PRIVATE

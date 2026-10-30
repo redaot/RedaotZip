@@ -1,0 +1,34 @@
+#pragma once
+#define IDI_APP         1
+#define IDD_ARCHIVE     101
+#define IDD_EXTRACT     102
+#define IDD_MAIN        103
+
+#define IDC_LOGO        1001
+#define IDC_TITLE       1002
+#define IDC_SUBTITLE    1003
+#define IDC_OUT         1004
+#define IDC_BROWSE      1005
+#define IDC_PW          1006
+#define IDC_PW2         1007
+#define IDC_SHOWPW      1008
+#define IDC_STRENGTH    1009
+#define IDC_LEVEL       1010
+#define IDC_WARNFILE    1011
+#define IDC_HIDENAMES   1012
+#define IDC_PROGRESS    1013
+#define IDC_STATUS      1014
+#define IDC_BRAND       1015
+#define IDC_INFO        1016
+#define IDC_DEST        1017
+#define IDC_OVERWRITE   1018
+#define IDC_OPENFOLDER  1019
+#define IDC_PWLABEL     1020
+#define IDC_PW2LABEL    1021
+#define IDC_M_FILES     1030
+#define IDC_M_FOLDER    1031
+#define IDC_M_EXTRACT   1032
+#define IDC_L_OUT       1040
+#define IDC_L_LEVEL     1041
+#define IDC_L_DEST      1042
+#define IDC_L_TIP       1043

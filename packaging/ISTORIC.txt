@@ -1,0 +1,46 @@
+RedaotZip - istoric versiuni (made by REDAOT)
+
+v1.0.7 (30.10.2026)
+  - Nou: limba engleza (program, meniu, installer, manual). Limba se alege la instalare.
+  - Nou: installer Setup.exe (alegerea limbii, manual la final).
+  - Reparat: pe arhivele .zip optiunile apareau intr-un submeniu dublu.
+    Acum "Dezarhiveaza" si "Arhiveaza" apar direct, una sub alta (doua pachete de meniu).
+  - Manual in engleza: "RedaotZip Manual (EN).pdf".
+
+v1.0.6 (30.10.2026)
+  - Reparat: pe arhivele .zip submeniul "RedaotZip" din Windows 11 nu avea iconita.
+    Submeniul este acum creat de RedaotZip (cu iconita), cu "Dezarhiveaza" si "Arhiveaza".
+
+v1.0.5 (30.10.2026)
+  - Reparat: pe Windows 11 optiunile apareau de doua ori la "Show more options".
+    Cand meniul nou e activ, meniul clasic se scoate (Windows 11 il afiseaza singur acolo).
+    Meniul clasic se pune doar daca meniul nou nu poate fi inregistrat.
+
+v1.0.4 (29.10.2026)
+  - Meniul clasic ("Show more options") ramane mereu instalat, si pe Windows 11,
+    ca rezerva sigura pe langa meniul nou.
+  - Extensia de meniu scrie un jurnal (%LOCALAPPDATA%\RedaotZip\shell.log).
+  - Nou: Diagnostic.cmd - creeaza pe Desktop RedaotZip-diagnostic.txt pentru depanare.
+
+v1.0.3 (29.10.2026)
+  - Reparat: pachetul pentru meniul Windows 11 are acum structura ZIP64 ceruta de Windows
+    (eroarea 0x8007000B "Package could not be opened").
+  - Reparat: meniul clasic de rezerva se scrie direct de installer, nu mai depinde de program.
+  - Installerul verifica daca Windows (Smart App Control / antivirus) blocheaza programul
+    si spune ce trebuie facut.
+  - La o eroare de inregistrare a meniului, detaliile Windows se salveaza pe Desktop
+    (RedaotZip-eroare-meniu.txt).
+  - Manualul (PDF) este inclus in arhiva, in folderul programului si in Start Menu.
+
+v1.0.2 (29.10.2026)
+  - Installerul reporneste Explorer automat, fara sa mai intrebe.
+
+v1.0.1 (29.10.2026)
+  - Reparat: pachetul pentru meniul Windows 11 era corupt (eroare 0x8007000D la instalare).
+  - Windows 10: se foloseste direct meniul clasic (acolo apare fara "Show more options"),
+    fara certificat si fara mesaj de eroare.
+  - Verificarea de la pornire trateaza separat Windows 10.
+  - "Ascunde si numele fisierelor" este acum bifat implicit.
+
+v1.0.0 (29.10.2026)
+  - Prima versiune.

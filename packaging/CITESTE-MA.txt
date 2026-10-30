@@ -1,0 +1,28 @@
+RedaotZip @VERSION@  -  made by REDAOT
+Arhivator ZIP cu criptare AES-256
+=========================================
+
+INSTALARE
+  1. Dezarhivează tot folderul (click dreapta pe .zip -> Extract All / Extrage tot).
+  2. Dublu-click pe  Instaleaza.cmd
+  3. Acceptă cererea de administrator (Da / Yes).
+  4. La final Explorer se repornește automat și meniul apare imediat.
+
+  Manualul complet: "Manual RedaotZip.pdf" (și în Start Menu după instalare).
+
+  Dacă apare "Windows protected your PC", apasă "More info" -> "Run anyway".
+
+FOLOSIRE
+  - Click dreapta pe fișiere/foldere  -> "Arhivează cu REDAOT (AES-256)"
+  - Click dreapta pe o arhivă .zip    -> "Dezarhivează cu REDAOT"
+  - Sau din Start Menu -> RedaotZip
+
+DEZINSTALARE
+  Dublu-click pe  Dezinstaleaza.cmd  (sau din Setări -> Aplicații -> RedaotZip).
+
+IMPORTANT
+  Arhivele AES-256 NU se deschid cu utilitarul ZIP inclus în Windows.
+  Cine primește arhiva are nevoie de RedaotZip (https://github.com/redaot/RedaotZip),
+  7-Zip, PeaZip, WinRAR sau WinZip.
+
+Detalii complete: vezi "Manual RedaotZip.pdf".
