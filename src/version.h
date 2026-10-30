@@ -2,7 +2,7 @@
 // Versiunea programului - modifica aici si in build.sh (APP_VERSION)
 #define RZ_VER_MAJOR 1
 #define RZ_VER_MINOR 0
-#define RZ_VER_PATCH 7
+#define RZ_VER_PATCH 8
 #define RZ_VER_BUILD 0
 
 #define RZ_STR2(x) #x
@@ -12,5 +12,5 @@
 #define RZ_APP_NAME "RedaotZip"
 #define RZ_APP_NAME_W L"RedaotZip"
 #define RZ_BRAND_W L"made by REDAOT"
-#define RZ_HOMEPAGE "https://github.com/redaot/RedaotZip"
-#define RZ_HOMEPAGE_W L"https://github.com/redaot/RedaotZip"
+#define RZ_HOMEPAGE "https://github.com/redaot/RedaotZip/releases"
+#define RZ_HOMEPAGE_W L"https://github.com/redaot/RedaotZip/releases"

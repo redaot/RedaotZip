@@ -19,8 +19,8 @@ struct Cancelled : std::runtime_error { Cancelled() : std::runtime_error("cancel
 struct WrongPassword : std::runtime_error { using std::runtime_error::runtime_error; };
 struct ZipError : std::runtime_error { using std::runtime_error::runtime_error; };
 
-extern const char* kWarningFileName;   // fisierul de avertizare pentru utilitarul Windows
-extern const char* kNestedInnerName;   // arhiva interna cand numele fisierelor sunt ascunse
+const char* WarningFileName();   // fisierul de instructiuni pentru utilitarul Windows (in limba programului)
+const char* NestedInnerName();   // arhiva interna cand numele fisierelor sunt ascunse (in limba programului)
 
 struct ArchiveOptions {
     std::string password;      // UTF-8; gol = fara criptare

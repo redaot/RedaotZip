@@ -10,7 +10,7 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/redaot/RedaotZip/releases/latest"><b>⬇ Download the latest version</b></a> ·
+  <a href="https://github.com/redaot/RedaotZip/releases"><b>⬇ Download the latest version</b></a> ·
   <a href="docs/MANUAL.en.md">Manual (EN)</a> ·
   <a href="docs/MANUAL.ro.md">Manual (RO)</a> ·
   <a href="#română">Română</a>
@@ -42,7 +42,7 @@ Archives use the standard **WinZip AES** format, so they also open in **7-Zip, P
 
 ## Installation
 
-1. Download **`RedaotZip-x.y.z-Setup.exe`** from [Releases](https://github.com/redaot/RedaotZip/releases/latest).
+1. Download **`RedaotZip-x.y.z-Setup.exe`** from [Releases](https://github.com/redaot/RedaotZip/releases).
 2. Run it. If "Windows protected your PC" appears, click **More info → Run anyway** (the program is not signed by a paid certificate authority).
 3. Choose the language and click **Install**. Explorer restarts at the end and the menu is ready.
 
@@ -54,7 +54,7 @@ Uninstall from **Settings → Apps → Installed apps → RedaotZip**.
 
 ## Opening the archives elsewhere
 
-The ZIP tool built into Windows **cannot** open AES-256 archives: it shows error 0x80004005 and never asks for the password. Recipients need RedaotZip, [7-Zip](https://www.7-zip.org), [PeaZip](https://peazip.github.io), [WinRAR](https://www.win-rar.com) or [WinZip](https://www.winzip.com).
+The ZIP tool built into Windows **cannot** open AES-256 archives: it shows error 0x80004005 and never asks for the password. Recipients need [RedaotZip](https://github.com/redaot/RedaotZip/releases), [7-Zip](https://www.7-zip.org), [PeaZip](https://peazip.github.io), [WinRAR](https://www.win-rar.com) or [WinZip](https://www.winzip.com).
 
 ## Security notes
 
@@ -76,7 +76,7 @@ See [BUILDING.md](BUILDING.md). The project cross-compiles on Linux with MinGW-w
 
 **RedaotZip** este un arhivator ZIP pentru Windows cu **criptare AES-256**, direct în meniul de click dreapta (pe Windows 11 fără „Show more options”). Arhivele se deschid și cu 7-Zip, PeaZip, WinRAR și WinZip.
 
-- **Descarcă:** `RedaotZip-x.y.z-Setup.exe` din [Releases](https://github.com/redaot/RedaotZip/releases/latest), rulează-l, alege limba și apasă **Instalează**.
+- **Descarcă:** `RedaotZip-x.y.z-Setup.exe` din [Releases](https://github.com/redaot/RedaotZip/releases), rulează-l, alege limba și apasă **Instalează**.
 - **Folosire:** click dreapta pe fișiere → *Arhivează cu REDAOT (AES-256)*; click dreapta pe o arhivă .zip → *Dezarhivează cu REDAOT*.
 - **Important:** utilitarul ZIP din Windows nu poate deschide arhive AES-256. Destinatarul are nevoie de RedaotZip, 7-Zip, PeaZip, WinRAR sau WinZip; în fiecare arhivă se pune un fișier cu aceste instrucțiuni.
 - **Manual complet:** [docs/MANUAL.ro.md](docs/MANUAL.ro.md)

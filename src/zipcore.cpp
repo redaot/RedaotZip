@@ -21,8 +21,15 @@
 
 namespace rz {
 
-const char* kWarningFileName = "!!! CITESTE-MA - ARHIVA CRIPTATA.txt";
-const char* kNestedInnerName = "continut.zip";
+// Numele fisierelor puse in arhiva urmeaza limba programului; la citire le recunoastem pe toate.
+static const char* kWarnRo  = "!!! CITESTE-MA - ARHIVA CRIPTATA.txt";
+static const char* kWarnEn  = "!!! README - ENCRYPTED ARCHIVE.txt";
+static const char* kInnerRo = "continut.zip";
+static const char* kInnerEn = "content.zip";
+const char* WarningFileName() { return TR(kWarnRo, kWarnEn); }
+const char* NestedInnerName() { return TR(kInnerRo, kInnerEn); }
+static bool IsWarningName(const std::string& n) { return n == kWarnRo || n == kWarnEn; }
+static bool IsInnerName(const std::string& n) { return n == kInnerRo || n == kInnerEn; }
 static const char* kNestedMarker = "[REDAOT-NESTED-1]";
 
 static const size_t kBuf = 1 << 20; // 1 MB
@@ -530,8 +537,8 @@ private:
 };
 
 static std::string WarningText() {
-    std::string t =
-        "\xEF\xBB\xBF"
+    const std::string inner = NestedInnerName();
+    std::string ro =
         "ATENȚIE: ACEASTĂ ARHIVĂ ESTE CRIPTATĂ CU AES-256\r\n"
         "================================================\r\n\r\n"
         "Fișierele din această arhivă sunt protejate cu parolă și criptate cu AES-256.\r\n\r\n"
@@ -543,31 +550,39 @@ static std::string WarningText() {
         "   - PeaZip     (gratuit)   https://peazip.github.io\r\n"
         "   - WinRAR                 https://www.win-rar.com\r\n"
         "   - WinZip                 https://www.winzip.com\r\n\r\n"
-        "Exemplu cu 7-Zip: click dreapta pe arhivă -> 7-Zip -> Extract Here,\r\n"
-        "apoi introdu parola primită de la expeditor.\r\n\r\n"
-        "Dacă în arhivă vezi doar fișierul \"continut.zip\", deschide-l după dezarhivare:\r\n"
-        "acela conține fișierele propriu-zise (numele lor au fost ascunse).\r\n\r\n"
-        "------------------------------------------------------------------\r\n"
-        "WARNING: THIS ARCHIVE IS ENCRYPTED WITH AES-256.\r\n"
-        "The ZIP tool built into Windows cannot open it and does not ask\r\n"
-        "for the password. To extract it, install one of these programs:\r\n\r\n"
+        "Apoi click dreapta pe arhivă, dezarhiveaz-o și introdu parola\r\n"
+        "primită de la expeditor.\r\n\r\n"
+        "Dacă în arhivă vezi doar fișierul \"" + inner + "\", dezarhivează-l și pe el:\r\n"
+        "acela conține fișierele propriu-zise (numele lor au fost ascunse).\r\n";
+    std::string en =
+        "WARNING: THIS ARCHIVE IS ENCRYPTED WITH AES-256\r\n"
+        "===============================================\r\n\r\n"
+        "The files in this archive are password-protected and encrypted with AES-256.\r\n\r\n"
+        "The ZIP tool built into Windows CANNOT open AES-256 encrypted archives:\r\n"
+        "it shows an error (for example 0x80004005) and never asks for the password.\r\n\r\n"
+        "To extract it, install one of these programs:\r\n\r\n"
         "   - RedaotZip  (free)   " RZ_HOMEPAGE "\r\n"
         "   - 7-Zip      (free)   https://www.7-zip.org\r\n"
         "   - PeaZip     (free)   https://peazip.github.io\r\n"
         "   - WinRAR              https://www.win-rar.com\r\n"
         "   - WinZip              https://www.winzip.com\r\n\r\n"
         "Then right-click the archive, extract it and enter the password\r\n"
-        "you received from the sender. If you only see \"continut.zip\",\r\n"
-        "extract it too: it holds the actual files (their names were hidden).\r\n"
-        "------------------------------------------------------------------\r\n\r\n"
-        "Creată cu / Created with " RZ_APP_NAME " v" RZ_VERSION_STR " - made by REDAOT\r\n";
+        "you received from the sender.\r\n\r\n"
+        "If you only see the file \"" + inner + "\", extract it too:\r\n"
+        "it holds the actual files (their names were hidden).\r\n";
+    const std::string sep = "\r\n------------------------------------------------------------------\r\n\r\n";
+    std::string t = "\xEF\xBB\xBF";
+    t += IsRo() ? ro + sep + en : en + sep + ro;
+    t += sep;
+    t += TR("Creată cu ", "Created with ");
+    t += RZ_APP_NAME " v" RZ_VERSION_STR " - made by REDAOT\r\n";
     return t;
 }
 
 static std::string ArchiveComment(bool nested) {
-    std::string c = "Arhiva criptata AES-256. Deschide-o cu RedaotZip (" RZ_HOMEPAGE "), 7-Zip, PeaZip, WinRAR sau WinZip. "
-                    "(AES-256 encrypted - use RedaotZip, 7-Zip, PeaZip, WinRAR or WinZip.) "
-                    RZ_APP_NAME " v" RZ_VERSION_STR " - made by REDAOT";
+    const std::string ro = "Arhiva criptata AES-256. Deschide-o cu RedaotZip (" RZ_HOMEPAGE "), 7-Zip, PeaZip, WinRAR sau WinZip.";
+    const std::string en = "AES-256 encrypted archive. Open it with RedaotZip (" RZ_HOMEPAGE "), 7-Zip, PeaZip, WinRAR or WinZip.";
+    std::string c = (IsRo() ? ro + " / " + en : en + " / " + ro) + " - " RZ_APP_NAME " v" RZ_VERSION_STR " - made by REDAOT";
     if (nested) c += std::string(" ") + kNestedMarker;
     return c;
 }
@@ -607,15 +622,15 @@ void CreateArchive(const std::vector<fs::path>& inputs, const fs::path& output,
             FileMeta im; GetMeta(innerTmp, im);
             ArchiveOptions oo = opt; oo.level = 0; // continutul e deja comprimat
             ZipWriter w(tmp, oo, [&](uint64_t d, uint64_t, const std::string&) {
-                return progress ? progress(total + (im.size ? d * total / im.size : 0), total * 2, kNestedInnerName) : true;
+                return progress ? progress(total + (im.size ? d * total / im.size : 0), total * 2, NestedInnerName()) : true;
             }, im.size);
-            if (opt.addWarningFile) w.AddMemory(kWarningFileName, WarningText(), false);
-            w.AddFile(innerTmp, kNestedInnerName, im, true);
+            if (opt.addWarningFile) w.AddMemory(WarningFileName(), WarningText(), false);
+            w.AddFile(innerTmp, NestedInnerName(), im, true);
             w.Finish(ArchiveComment(true));
             RemoveQuiet(innerTmp);
         } else {
             ZipWriter w(tmp, opt, progress, total);
-            if (encrypt && opt.addWarningFile) w.AddMemory(kWarningFileName, WarningText(), false);
+            if (encrypt && opt.addWarningFile) w.AddMemory(WarningFileName(), WarningText(), false);
             for (auto& i : items) {
                 if (i.meta.isDir) w.AddDir(i.name, i.meta);
                 else w.AddFile(i.src, i.name, i.meta, encrypt);
@@ -950,7 +965,7 @@ ArchiveInfo InspectArchive(const fs::path& zip) {
     bool anyEnc = false, anyPlain = false, anyAes = false, anyZc = false;
     std::string root; bool rootOk = true; size_t considered = 0; bool rootHasChildren = false;
     for (auto& z : r.entries) {
-        if (z.name == kWarningFileName && !z.encrypted()) { info.hasWarningFile = true; continue; }
+        if (IsWarningName(z.name) && !z.encrypted()) { info.hasWarningFile = true; continue; }
         if (z.isDir()) ++info.dirs; else { ++info.files; info.totalBytes += z.usize; }
         if (!z.isDir()) {
             if (z.encrypted()) { anyEnc = true; if (z.aes) { anyAes = true; info.aesBits = std::max(info.aesBits, (int)AesKeyLen(z.aesStrength) * 8); } else anyZc = true; }
@@ -986,7 +1001,7 @@ static ExtractResult ExtractImpl(const fs::path& zip, const fs::path& destDir, c
     uint64_t total = 0;
     const ZEntry* firstEnc = nullptr;
     for (auto& z : r.entries) {
-        if (z.name == kWarningFileName && !z.encrypted()) continue;
+        if (IsWarningName(z.name) && !z.encrypted()) continue;
         if (!z.isDir()) { CheckSupported(z); total += z.csize; }
         if (z.encrypted() && !firstEnc && !z.isDir()) firstEnc = &z;
     }
@@ -1002,7 +1017,7 @@ static ExtractResult ExtractImpl(const fs::path& zip, const fs::path& destDir, c
 
     if (nested) {
         const ZEntry* inner = nullptr;
-        for (auto& z : r.entries) if (z.name == kNestedInnerName) inner = &z;
+        for (auto& z : r.entries) if (IsInnerName(z.name)) inner = &z;
         if (inner) {
             fs::path tmp = TempSibling(destDir / "x", "inner");
             try {
@@ -1019,7 +1034,7 @@ static ExtractResult ExtractImpl(const fs::path& zip, const fs::path& destDir, c
     }
 
     for (auto& z : r.entries) {
-        if (z.name == kWarningFileName && !z.encrypted()) continue;
+        if (IsWarningName(z.name) && !z.encrypted()) continue;
         std::string rel;
         if (!SafeRelative(z.name, rel)) { ++res.skippedUnsafe; continue; }
         fs::path target = destDir / Utf8ToPath(rel);

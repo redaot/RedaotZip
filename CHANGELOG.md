@@ -1,9 +1,14 @@
 # Changelog
 
+## 1.0.8 — 2026-10-30
+- File names added to archives follow the program language: `!!! README - ENCRYPTED ARCHIVE.txt` and `content.zip` in English, `!!! CITESTE-MA - ARHIVA CRIPTATA.txt` and `continut.zip` in Romanian. Both are recognized when extracting.
+- The instructions file starts with the program language (it always contains both languages).
+- The download link for RedaotZip in the instructions file is https://github.com/redaot/RedaotZip/releases.
+
 ## 1.0.7 — 2026-10-30
 - New: English interface (program, menu, installer, manual); the language is chosen during setup.
 - New: `Setup.exe` installer with language selection.
-- New: RedaotZip (github.com/redaot/RedaotZip) is listed first in the instructions file added to archives.
+- New: RedaotZip is listed first in the instructions file added to archives.
 - Fixed: on .zip files the options appeared in a nested submenu on Windows 11. *Extract* and *Archive* now appear directly, one under the other (two menu packages).
 
 ## 1.0.6 — 2026-10-30

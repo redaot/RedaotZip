@@ -1,6 +1,6 @@
 # RedaotZip Manual
 
-**RedaotZip v1.0.7 — made by REDAOT**
+**RedaotZip v1.0.8 — made by REDAOT**
 
 ## What RedaotZip is
 
@@ -23,13 +23,13 @@ Archives use the standard WinZip AES format, so they also open in **7-Zip, PeaZi
 
 Installation takes under a minute and asks for administrator rights once.
 
-1. Download **`RedaotZip-1.0.7-Setup.exe`**.
+1. Download **`RedaotZip-1.0.8-Setup.exe`**.
 2. Double-click it. If "Windows protected your PC" appears, click **More info → Run anyway** (it appears because the program is not signed by a paid certificate authority).
 3. Answer **Yes** to the administrator prompt.
 4. Choose the language: **English** or **Română**.
 5. Click **Next**. At the end Explorer restarts automatically (open folder windows close) and the menu appears right away.
 
-Alternatively, without Setup.exe: extract `RedaotZip-1.0.7-Windows.zip` and double-click **Instaleaza.cmd** (the language follows the Windows language).
+Alternatively, without Setup.exe: extract `RedaotZip-1.0.8-Windows.zip` and double-click **Instaleaza.cmd** (the language follows the Windows language).
 
 What setup does:
 
@@ -43,7 +43,7 @@ If the Windows 11 menu cannot be registered, the classic menu is used ("Show mor
 
 ## Archiving
 
-Select one or more files or folders, right-click → **Archive with REDAOT (AES-256)**. The archive window opens, showing "made by REDAOT • v1.0.7" at the bottom left.
+Select one or more files or folders, right-click → **Archive with REDAOT (AES-256)**. The archive window opens, showing "made by REDAOT • v1.0.8" at the bottom left.
 
 1. **Archive to create:** by default next to the files, named after the file or folder (e.g. `Documents.zip`). The "..." button picks another place or name.
 2. **Password** and **Confirm password:** type the same password twice. The meter shows its strength: weak, fair, good, very good. "Show password" makes it visible.
@@ -53,8 +53,8 @@ Select one or more files or folders, right-click → **Archive with REDAOT (AES-
 
 | Option | Default | What it does |
 | --- | --- | --- |
-| Instructions file for Windows users | on | Adds an unencrypted `!!! CITESTE-MA - ARHIVA CRIPTATA.txt` (in Romanian and English) explaining which program to use. RedaotZip ignores it when extracting. |
-| Also hide file names | on | Files go into an inner archive `continut.zip`, encrypted. Without the password even the file names are hidden. |
+| Instructions file for Windows users | on | Adds an unencrypted `!!! README - ENCRYPTED ARCHIVE.txt` (in English and Romanian) explaining which program to use. With the Romanian interface it is named `!!! CITESTE-MA - ARHIVA CRIPTATA.txt`. RedaotZip ignores it when extracting. |
+| Also hide file names | on | Files go into an encrypted inner archive `content.zip` (`continut.zip` with the Romanian interface). Without the password even the file names are hidden. |
 
 If the password is short or contains accented characters, the program warns you first. Accented characters work in RedaotZip and 7-Zip, but other programs may interpret them differently.
 
@@ -74,7 +74,7 @@ Existing files are not overwritten: they are saved as `file (2).txt`. Check **Ov
 
 **Several archives at once:** select them all, right-click → Extract with REDAOT. They open one after another, and the password typed for the first is filled in for the next ones.
 
-**Archives with hidden names** (`continut.zip`): RedaotZip extracts the inner files directly. With 7-Zip or WinRAR you first extract `continut.zip`, which then opens without a password.
+**Archives with hidden names** (`content.zip` / `continut.zip`): RedaotZip extracts the inner files directly. With 7-Zip or WinRAR you first extract `content.zip`, which then opens without a password.
 
 **Protection:** entries with dangerous paths (e.g. `..\..\Windows\file`) are skipped, so an archive can never write outside the chosen folder. The program reports how many were skipped.
 
@@ -84,13 +84,13 @@ The recipient needs a program that supports AES-256. The Windows tool is not eno
 
 | Program | Price | How to open the archive |
 | --- | --- | --- |
-| [RedaotZip](https://github.com/redaot/RedaotZip) | free | Right-click → Extract with REDAOT |
+| [RedaotZip](https://github.com/redaot/RedaotZip/releases) | free | Right-click → Extract with REDAOT |
 | [7-Zip](https://www.7-zip.org) | free | Right-click → 7-Zip → Extract Here, then the password |
 | [PeaZip](https://peazip.github.io) | free | Right-click → PeaZip → Extract here |
 | [WinRAR](https://www.win-rar.com) | paid, trial | Right-click → Extract Here |
 | [WinZip](https://www.winzip.com) | paid | Double-click the archive |
 
-If the recipient still tries Windows, they get an error, but they see the file **!!! CITESTE-MA - ARHIVA CRIPTATA.txt** in the archive. It is not encrypted and explains, in Romanian and English, which programs to install, with links. The same message is in the archive comment (shown by WinRAR).
+If the recipient still tries Windows, they get an error, but they see the file **!!! README - ENCRYPTED ARCHIVE.txt** in the archive. It is not encrypted and explains, in English and Romanian, which programs to install, with links. The same message is in the archive comment (shown by WinRAR).
 
 **Send the password through a different channel than the archive** (e.g. archive by email, password by text message or phone).
 

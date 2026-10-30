@@ -2,7 +2,7 @@
 # Compileaza RedaotZip pentru Windows x64 (MinGW-w64), construieste pachetul MSIX si il semneaza.
 set -euo pipefail
 cd "$(dirname "$0")"
-APP_VERSION="1.0.7"
+APP_VERSION="1.0.8"
 OUT=build/win
 mkdir -p "$OUT"
 CXX=x86_64-w64-mingw32-g++

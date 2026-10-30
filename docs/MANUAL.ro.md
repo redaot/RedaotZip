@@ -1,6 +1,6 @@
 # Manual RedaotZip
 
-**RedaotZip v1.0.7 — made by REDAOT**
+**RedaotZip v1.0.8 — made by REDAOT**
 
 ## Ce este RedaotZip
 
@@ -23,13 +23,13 @@ Arhivele folosesc formatul standard WinZip AES, deci se deschid și cu **7-Zip, 
 
 Instalarea durează sub un minut și cere o singură dată drepturi de administrator.
 
-1. Descarcă **`RedaotZip-1.0.7-Setup.exe`**.
+1. Descarcă **`RedaotZip-1.0.8-Setup.exe`**.
 2. Dă dublu-click pe el. Dacă apare „Windows protected your PC”, apasă **More info → Run anyway** (mesajul apare pentru că programul nu e semnat de o firmă de certificare plătită).
 3. Răspunde **Da** la cererea de administrator.
 4. Alege limba: **Română** sau **English**.
 5. Apasă **Înainte**. La final Explorer se repornește automat (ferestrele de foldere deschise se închid) și meniul apare imediat.
 
-Alternativ, fără Setup.exe: dezarhivează `RedaotZip-1.0.7-Windows.zip` și dă dublu-click pe **Instaleaza.cmd** (limba se ia după limba Windows).
+Alternativ, fără Setup.exe: dezarhivează `RedaotZip-1.0.8-Windows.zip` și dă dublu-click pe **Instaleaza.cmd** (limba se ia după limba Windows).
 
 Ce face instalarea:
 
@@ -43,7 +43,7 @@ Dacă meniul Windows 11 nu se poate înregistra, se pune meniul clasic (la „Sh
 
 ## Arhivare
 
-Selectează unul sau mai multe fișiere ori foldere, click dreapta → **Arhivează cu REDAOT (AES-256)**. Se deschide fereastra de arhivare, cu „made by REDAOT • v1.0.7” jos în stânga.
+Selectează unul sau mai multe fișiere ori foldere, click dreapta → **Arhivează cu REDAOT (AES-256)**. Se deschide fereastra de arhivare, cu „made by REDAOT • v1.0.8” jos în stânga.
 
 1. **Arhiva care se creează:** implicit lângă fișiere, cu numele fișierului sau folderului (ex. `Documente.zip`). Butonul „...” alege alt loc sau alt nume.
 2. **Parolă** și **Confirmă parola:** scrie aceeași parolă de două ori. Indicatorul arată puterea ei: slabă, medie, bună, foarte bună. „Arată parola” o face vizibilă.
@@ -53,8 +53,8 @@ Selectează unul sau mai multe fișiere ori foldere, click dreapta → **Arhivea
 
 | Opțiune | Implicit | Ce face |
 | --- | --- | --- |
-| Fișier cu instrucțiuni pentru Windows | bifat | Pune în arhivă `!!! CITESTE-MA - ARHIVA CRIPTATA.txt`, necriptat, care explică ce program trebuie folosit. RedaotZip îl ignoră la dezarhivare. |
-| Ascunde și numele fișierelor | bifat | Fișierele intră într-o arhivă internă `continut.zip`, criptată. Fără parolă nu se văd nici numele fișierelor. |
+| Fișier cu instrucțiuni pentru Windows | bifat | Pune în arhivă `!!! CITESTE-MA - ARHIVA CRIPTATA.txt`, necriptat, care explică (în română și engleză) ce program trebuie folosit. Cu interfața în engleză se numește `!!! README - ENCRYPTED ARCHIVE.txt`. RedaotZip îl ignoră la dezarhivare. |
+| Ascunde și numele fișierelor | bifat | Fișierele intră într-o arhivă internă criptată, `continut.zip` (`content.zip` cu interfața în engleză). Fără parolă nu se văd nici numele fișierelor. |
 
 Dacă parola e scurtă sau conține diacritice, programul te avertizează înainte. Diacriticele merg în RedaotZip și 7-Zip, dar alte programe le pot interpreta diferit.
 
@@ -74,7 +74,7 @@ Fișierele care există deja nu se suprascriu: se salvează ca `fișier (2).txt`
 
 **Mai multe arhive odată:** selectează-le pe toate, click dreapta → Dezarhivează cu REDAOT. Se deschid pe rând, iar parola scrisă la prima se completează la următoarele.
 
-**Arhive cu nume ascunse** (`continut.zip`): RedaotZip extrage direct fișierele din interior. Cu 7-Zip sau WinRAR se extrage întâi `continut.zip`, care apoi se deschide fără parolă.
+**Arhive cu nume ascunse** (`continut.zip` / `content.zip`): RedaotZip extrage direct fișierele din interior. Cu 7-Zip sau WinRAR se extrage întâi `continut.zip`, care apoi se deschide fără parolă.
 
 **Protecție:** fișierele din arhivă cu căi periculoase (ex. `..\..\Windows\fișier`) sunt ignorate, ca o arhivă să nu poată scrie în afara folderului ales. Programul anunță câte a ignorat.
 
@@ -84,7 +84,7 @@ Destinatarul are nevoie de un program care știe AES-256. Utilitarul din Windows
 
 | Program | Preț | Cum se deschide arhiva |
 | --- | --- | --- |
-| [RedaotZip](https://github.com/redaot/RedaotZip) | gratuit | Click dreapta → Dezarhivează cu REDAOT |
+| [RedaotZip](https://github.com/redaot/RedaotZip/releases) | gratuit | Click dreapta → Dezarhivează cu REDAOT |
 | [7-Zip](https://www.7-zip.org) | gratuit | Click dreapta → 7-Zip → Extract Here, apoi parola |
 | [PeaZip](https://peazip.github.io) | gratuit | Click dreapta → PeaZip → Extract here |
 | [WinRAR](https://www.win-rar.com) | cu licență, perioadă de probă | Click dreapta → Extract Here |

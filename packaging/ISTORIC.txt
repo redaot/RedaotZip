@@ -1,5 +1,12 @@
 RedaotZip - istoric versiuni (made by REDAOT)
 
+v1.0.8 (30.10.2026)
+  - Numele fisierelor puse in arhiva urmeaza limba programului:
+    engleza: "!!! README - ENCRYPTED ARCHIVE.txt" si "content.zip",
+    romana:  "!!! CITESTE-MA - ARHIVA CRIPTATA.txt" si "continut.zip".
+    La dezarhivare sunt recunoscute ambele variante.
+  - Fisierul de instructiuni incepe cu limba programului (are mereu ambele limbi).
+
 v1.0.7 (30.10.2026)
   - Nou: limba engleza (program, meniu, installer, manual). Limba se alege la instalare.
   - Nou: installer Setup.exe (alegerea limbii, manual la final).

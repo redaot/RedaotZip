@@ -22,7 +22,7 @@ DEZINSTALARE
 
 IMPORTANT
   Arhivele AES-256 NU se deschid cu utilitarul ZIP inclus în Windows.
-  Cine primește arhiva are nevoie de RedaotZip (https://github.com/redaot/RedaotZip),
+  Cine primește arhiva are nevoie de RedaotZip (https://github.com/redaot/RedaotZip/releases),
   7-Zip, PeaZip, WinRAR sau WinZip.
 
 Detalii complete: vezi "Manual RedaotZip.pdf".
